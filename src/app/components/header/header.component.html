@@ -4,14 +4,24 @@
     <a class="navbar-brand" href="#"><span>P</span>rac<span>K</span>tise_</a>
 
     <div class="collapse navbar-collapse">
-      <form class="form-inline my-2 my-lg-0">
+      <form #searchBar="ngForm" class="form-inline my-2 my-lg-0">
         <input
+          #inputText="ngModel"
+          [(ngModel)]="cityName"
           class="form-control mr-sm-2"
-          type="search"
+          type="text"
           placeholder="Search"
           aria-label="Search"
+          name="cityName"
+          required
         />
+        <small
+          class="text-danger"
+          [class.d-none]="inputText.valid || inputText.untouched"
+          >Name is required
+        </small>
       </form>
     </div>
   </nav>
+  
 </header>
