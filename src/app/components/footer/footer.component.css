@@ -1,0 +1,12 @@
+span {
+  padding-right: 4px;
+  padding-left: 4px;
+  color: rgb(9, 239, 9);
+  background-color: black;
+  font-family: monospace;
+  font-size: larger;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
