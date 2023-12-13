@@ -1,0 +1,37 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+main div {
+  width: 55vh;
+}
+#showMainInfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#top-container {
+  position: relative;
+  text-align: center;
+}
+#top-container img {
+  width: 100%;
+}
+img {
+  width: 30%;
+}
+#bottom-container {
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#bottom-container div {
+  width: 35%;
+  height: fit-content;
+}

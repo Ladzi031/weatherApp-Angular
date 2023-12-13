@@ -1,2 +1,21 @@
-<router-outlet></router-outlet>
-<button class="text-center btn btn-primary">hello WORLD</button>
+<app-header></app-header>
+<main>
+    <div>
+        <div id="top-container">
+            <img src="{{ loadImage }}" alt="{{ altText }}" />
+            <div id="showMainInfo">
+                <h2>Pretoria</h2>
+                <h4>33 °C</h4>
+            </div>
+        </div>
+    </div>
+  <div id="bottom-container">
+    <div *ngFor="let item of list">
+      <p>{{ item.measurement }}</p>
+      <img src="{{ item.pic }}" alt="{{ item.altText }}" />
+      <p>{{ item.value }}</p>
+    </div>
+  </div>
+    
+</main>
+<app-footer></app-footer>
