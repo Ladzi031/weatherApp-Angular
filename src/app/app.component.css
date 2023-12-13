@@ -19,12 +19,15 @@ main div {
 }
 #top-container img {
   width: 100%;
+  border-top-right-radius: 10%;
+  border-top-left-radius: 10%;
 }
 img {
-  width: 30%;
+  width: 25%;
 }
 #bottom-container {
-  background-color: cadetblue;
+  padding-top: 3%;
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
