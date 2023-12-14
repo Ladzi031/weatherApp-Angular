@@ -4,7 +4,11 @@
     <a class="navbar-brand" href="#"><span>P</span>rac<span>K</span>tise_</a>
 
     <div class="collapse navbar-collapse">
-      <form #searchBar="ngForm" class="form-inline my-2 my-lg-0">
+      <form
+        #searchBar="ngForm"
+        class="form-inline my-2 my-lg-0"
+        (ngSubmit)="getWeather()"
+      >
         <input
           #inputText="ngModel"
           [(ngModel)]="cityName"
@@ -23,5 +27,4 @@
       </form>
     </div>
   </nav>
-  
 </header>
