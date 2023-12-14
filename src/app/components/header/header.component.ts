@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Notify } from 'notiflix';
+import { WeatherService } from 'src/app/services/weather.service';
 import { validateCityName } from 'src/app/utils/cityNameValidate';
 @Component({
   selector: 'app-header',
@@ -13,9 +14,10 @@ export class HeaderComponent {
   }
 
   getWeather() {
+    // call weatherservice,  to lowercase
     if (validateCityName(this.cityName) && this.cityName.length !== 0) {
-      // call weatherservice,  to lowercase
-      Notify.success("correct fetchingdata");
+      let weatherservice = inject(WeatherService);
+      weatherservice.setCityName(this.cityName);
 
       /*something interesting:
       city with one of the shortest name in the world is "Å" located in Norway.
