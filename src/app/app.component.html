@@ -1,11 +1,11 @@
-<app-header></app-header>
+<app-header (weatherInfo)="displayInfo($event)"></app-header>
 <main>
   <div>
     <div id="top-container">
       <img src="{{ loadImage }}" alt="{{ altText }}" />
       <div id="showMainInfo">
-        <h2>Pretoria</h2>
-        <h4>33 °C</h4>
+        <h2>{{ data.location.name }}</h2>
+        <h4>{{ data.current.temp_c }} °C</h4>
       </div>
     </div>
   </div>
@@ -14,13 +14,13 @@
       <img src="../assets/images/humidity.png" alt="humidity pic" />
       <br />
       <small>Humidity</small>
-      <p>34</p>
+      <p>{{ data.current.humidity }}</p>
     </div>
     <div>
       <img src="../assets/images/cold.png" alt="cold pic" />
       <br />
       <small>Lowest Temp</small>
-      <p>34 °C</p>
+      <p>{{ data.current.feelslike_c }} °C</p>
     </div>
     <div>
       <img src="../assets/images/thermometer.png" alt="thermometer pic" />
@@ -32,7 +32,7 @@
       <img src="../assets/images/wind.png" alt="wind pic" />
       <br />
       <small>Wind speed:</small>
-      <p>34 km/h</p>
+      <p>{{ data.current.wind_kph }} km/h</p>
     </div>
   </div>
 </main>

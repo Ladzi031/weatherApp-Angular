@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { Notify } from 'notiflix';
+import { weatherData } from 'src/app/models/weather.model';
 import { WeatherService } from 'src/app/services/weather.service';
 import { validateCityName } from 'src/app/utils/cityNameValidate';
 @Component({
@@ -9,22 +10,28 @@ import { validateCityName } from 'src/app/utils/cityNameValidate';
 })
 export class HeaderComponent {
   cityName: string = "";
+  weatherService: any;
+  @Output() weatherInfo: EventEmitter<weatherData> = new EventEmitter();
   constructor() {
-
+    this.weatherService = inject(WeatherService);
   }
 
   getWeather() {
-    // call weatherservice,  to lowercase
     if (validateCityName(this.cityName) && this.cityName.length !== 0) {
-      let weatherservice = inject(WeatherService);
-      weatherservice.setCityName(this.cityName);
-
-      /*something interesting:
-      city with one of the shortest name in the world is "Å" located in Norway.
-       */
+      this.weatherService.setCityName(this.cityName);
+      this.weatherService.fetchWeatherData().subscribe({
+        next: (data: weatherData) => {
+          this.weatherInfo.emit(data);
+        }
+      });
     } else {
       Notify.failure("please double check the name of the city");
     }
   }
 
 }
+
+/*
+something interesting:
+  city with one of the shortest name in the world is "Å" located in Norway.
+*/

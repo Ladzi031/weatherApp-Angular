@@ -1,4 +1,4 @@
 export function validateCityName(cityName: string): boolean {
-    let containsLettersOnly = /^[a-zA-Z]+$/;
+    let containsLettersOnly: RegExp = /^[a-zA-Z]+$/;
     return containsLettersOnly.test(cityName);
 }
