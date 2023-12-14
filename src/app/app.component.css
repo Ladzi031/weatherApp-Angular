@@ -33,8 +33,18 @@ img {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  font-family: cursive;
 }
 #bottom-container div {
   width: 35%;
   height: fit-content;
+}
+.custom {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+#image-from-api {
+  width: 30%;
 }

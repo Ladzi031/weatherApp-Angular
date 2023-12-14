@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { Notify } from 'notiflix';
+ import { Notify } from 'notiflix';
 import { weatherData } from 'src/app/models/weather.model';
 import { WeatherService } from 'src/app/services/weather.service';
 import { validateCityName } from 'src/app/utils/cityNameValidate';

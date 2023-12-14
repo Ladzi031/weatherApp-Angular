@@ -11,27 +11,25 @@
     </div>
   </div>
   <div id="bottom-container">
-    <div>
+    <div class="custom">
       <img src="../assets/images/humidity.png" alt="humidity pic" />
-      <br />
-      <small>Humidity</small>
+      <small>Humidity:</small>
       <p>{{ data.current.humidity }} %</p>
     </div>
-    <div>
-      <img src="../assets/images/cold.png" alt="cold pic" />
-      <br />
-      <small>Lowest Temp</small>
-      <p>{{ data.current.feelslike_c }} °C</p>
+    <div class="custom">
+      <img src="../assets/images/location.png" alt="location pic" />
+      <p>{{ data.location.tz_id }}</p>
     </div>
-    <div>
-      <img src="../assets/images/thermometer.png" alt="thermometer pic" />
-      <br />
-      <small>Highest Temp</small>
-      <p>34 °C</p>
+    <div class="custom">
+      <img
+        src="{{ data.current.condition.icon }}"
+        id="image-from-api"
+        alt="thermometer pic"
+      />
+      <p>{{ data.current.condition.text }}</p>
     </div>
-    <div>
+    <div class="custom">
       <img src="../assets/images/wind.png" alt="wind pic" />
-      <br />
       <small>Wind speed:</small>
       <p>{{ data.current.wind_kph }} km/h</p>
     </div>
