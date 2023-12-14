@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { Notify } from 'notiflix';
 import { weatherData } from 'src/app/models/weather.model';
@@ -11,27 +12,27 @@ import { validateCityName } from 'src/app/utils/cityNameValidate';
 export class HeaderComponent {
   cityName: string = "";
   weatherService: any;
-  @Output() weatherInfo: EventEmitter<weatherData> = new EventEmitter();
+  @Output() weatherInfo !: EventEmitter<weatherData>;
+
   constructor() {
     this.weatherService = inject(WeatherService);
+    this.weatherInfo = new EventEmitter();
   }
 
   getWeather() {
     if (validateCityName(this.cityName) && this.cityName.length !== 0) {
       this.weatherService.setCityName(this.cityName);
-      this.weatherService.fetchWeatherData().subscribe({
-        next: (data: weatherData) => {
-          this.weatherInfo.emit(data);
-        }
-      });
+      this.weatherService.fetchWeatherData().subscribe((data: weatherData) => {
+        this.weatherInfo.emit(data)
+      },
+        (error: HttpErrorResponse) => {
+          Notify.failure("No matching location found.");
+          //Notify.failure(error.message);
+        });
     } else {
       Notify.failure("please double check the name of the city");
     }
   }
-
 }
 
-/*
-something interesting:
-  city with one of the shortest name in the world is "Å" located in Norway.
-*/
+

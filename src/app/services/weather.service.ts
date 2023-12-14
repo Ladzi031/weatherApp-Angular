@@ -15,9 +15,8 @@ export class WeatherService {
   setCityName(cityName: string): void {
     this.nameOfCity = cityName.toLowerCase();
   }
-  // set name of city, with other data... and get data
   fetchWeatherData(): Observable<weatherData> {
-    console.log("fetchedWeatherData method called!")
+   // console.log("fetchedWeatherData method called!")
     let headers = new HttpHeaders()
       .set(config.XRapidApiHost_label, config.XRapidApiHost_value)
       .set(config.XRapidApiKey_label, config.XRapidApiKey_value);
@@ -25,7 +24,7 @@ export class WeatherService {
     return this.http.get<weatherData>(config.apiUrl, { headers: headers, params: params }).pipe(catchError(this.errorHandler));
   }
   private errorHandler(error: HttpErrorResponse) {
-    return throwError(() => new Error(error.message));
+    return throwError(() => new Error(error.error));
   }
   private getNameOfCity(): string {
     return this.nameOfCity;

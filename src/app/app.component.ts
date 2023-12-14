@@ -7,49 +7,42 @@ import { weatherData } from './models/weather.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadImage: "../assets/images/coldWallpaper.jpg" | "../assets/images/hotWallpaper.jpg" = "../assets/images/coldWallpaper.jpg";
+  whiteText: boolean = false;
+  loadImage = "../assets/images/coldWallpaper.jpg";
+
   altText: "cold weather image" | "hot weather image" = "cold weather image";
 
   data !: weatherData;
+
+  private renderImage = {
+    hot: "../assets/images/hotWallpaper.jpg",
+    cold: "../assets/images/coldWallpaper.jpg"
+  }
+
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
     this.weatherService.fetchWeatherData().subscribe({
       next: (data) => {
         this.data = data;
+        let currentTemp_c = data.current.temp_c;
+        let isSunny: boolean = this.isHotWeather(currentTemp_c);
+        this.displayImage(isSunny);
       }
     });
   }
   displayInfo(data: weatherData) {
     this.data = data;
+    let currentTemp_c = data.current.temp_c;
+    let isSunny: boolean = this.isHotWeather(currentTemp_c);
+    this.displayImage(isSunny);
+  }
+
+  private isHotWeather(temp: number): boolean {
+    this.whiteText = temp > 15;
+    return temp > 15;
+  }
+  private displayImage(isSunny: boolean): void {
+    this.loadImage = isSunny ? this.renderImage.hot : this.renderImage.cold;
   }
 }
-
-/*
- list: any[] = [
-    {
-      measurement: "temperature",
-      pic: "../assets/images/cold.png",
-      altText: "cold weather",
-      value: 34
-    },
-    {
-      measurement: "temperature",
-      pic: "../assets/images/cold.png",
-      altText: "cold weather",
-      value: 34
-    },
-    {
-      measurement: "temperature",
-      pic: "../assets/images/cold.png",
-      altText: "cold weather",
-      value: 34
-    },
-    {
-      measurement: "temperature",
-      pic: "../assets/images/cold.png",
-      altText: "cold weather",
-      value: 34
-    }
-  ];
-*/

@@ -3,7 +3,8 @@
   <div>
     <div id="top-container">
       <img src="{{ loadImage }}" alt="{{ altText }}" />
-      <div id="showMainInfo">
+
+      <div class="text-white" id="showMainInfo">
         <h2>{{ data.location.name }}</h2>
         <h4>{{ data.current.temp_c }} °C</h4>
       </div>
@@ -14,7 +15,7 @@
       <img src="../assets/images/humidity.png" alt="humidity pic" />
       <br />
       <small>Humidity</small>
-      <p>{{ data.current.humidity }}</p>
+      <p>{{ data.current.humidity }} %</p>
     </div>
     <div>
       <img src="../assets/images/cold.png" alt="cold pic" />
