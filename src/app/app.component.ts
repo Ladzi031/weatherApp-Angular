@@ -8,15 +8,15 @@ import { weatherData } from './models/weather.model';
 })
 export class AppComponent implements OnInit {
   whiteText: boolean = false;
-  loadImage = "../assets/images/coldWallpaper.jpg";
+  loadImage = "./../assets/images/coldWallpaper.jpg";
 
   altText: "cold weather image" | "hot weather image" = "cold weather image";
 
   data !: weatherData;
 
   private renderImage = {
-    hot: "../assets/images/hotWallpaper.jpg",
-    cold: "../assets/images/coldWallpaper.jpg"
+    hot: "./../assets/images/hotWallpaper.jpg",
+    cold: "./../assets/images/coldWallpaper.jpg"
   }
 
   constructor(private weatherService: WeatherService) { }
