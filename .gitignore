@@ -14,7 +14,7 @@ npm-debug.log
 yarn-error.log
 
 src/config
-
+docs
 # IDEs and editors
 .idea/
 .project
